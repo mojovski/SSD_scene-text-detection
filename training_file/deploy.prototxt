@@ -1544,11 +1544,11 @@ layer {
       top_k: 400
     }
     save_output_param {
-      output_directory: "/home/chenxp/data/VOCdevkit/results/SSD_300x300"
+      output_directory: "/home/eugen/projects/deep_learning/SSD_scene-text-detection/out/SSD_300x300"
       output_name_prefix: "comp4_det_test_"
       output_format: "VOC"
-      label_map_file: "data/scenetext/labelmap_voc.prototxt"
-      name_size_file: "data/scenetext/test_name_size.txt"
+      label_map_file: "/home/eugen/projects/deep_learning/SSD_scene-text-detection/training_file/labelmap_voc.prototxt"
+      name_size_file: "/home/eugen/projects/deep_learning/SSD_scene-text-detection/training_file/test_name_size.txt"
       num_test_image: 70
     }
     code_type: CENTER_SIZE
