@@ -72,7 +72,11 @@ transformer.set_channel_swap('data', (2,1,0))  # the reference model has channel
 # set net to batch size of 1
 image_resize = 300
 net.blobs['data'].reshape(1,3,image_resize,image_resize)
-img_path=os.path.expanduser("~")+"/projects/cpp/videoocr/testdata/report1/v1_2.jpg"
+if len(sys.argv)==1:
+    img_path=os.path.expanduser("~")+"/projects/cpp/videoocr/testdata/report1/v1_2.jpg"
+else:
+    img_path=sys.argv[1]
+print "Loading file: "+str(img_path)
 #img_path=curr_dir+'/test_file/120.jpg'
 image = caffe.io.load_image(img_path)
 plt.imshow(image)
@@ -127,5 +131,10 @@ for i in xrange(top_conf.shape[0]):
     color = colors[label]
     currentAxis.add_patch(plt.Rectangle(*coords, fill=False, edgecolor=color, linewidth=2))
     #currentAxis.text(xmin, ymin, display_txt, bbox={'facecolor':color, 'alpha':0.5})
+dest_dir="/".join(img_path.split("/")[0:-1])
+inp_file_name=img_path.split("/")[-1]
 
+dest_path=dest_dir+"/"+inp_file_name.split(".")[0]+"_SSD.jpg"
+plt.savefig(dest_path, bbox_inches='tight')
+print "Output file saved in "+str(dest_path)
 plt.show()
