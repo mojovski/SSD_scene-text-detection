@@ -19,8 +19,8 @@ sys.path.insert(0, 'python')
 
 import caffe
 #if gpu is used:
-#caffe.set_device(0)
-#caffe.set_mode_gpu()
+caffe.set_device(0)
+caffe.set_mode_gpu()
 
 #load label data
 from google.protobuf import text_format
@@ -134,7 +134,7 @@ for i in xrange(top_conf.shape[0]):
 dest_dir="/".join(img_path.split("/")[0:-1])
 inp_file_name=img_path.split("/")[-1]
 
-dest_path=dest_dir+"/"+inp_file_name.split(".")[0]+"_SSD.jpg"
+dest_path=dest_dir+"/SSD_"+inp_file_name.split(".")[0]+".jpg"
 plt.savefig(dest_path, bbox_inches='tight')
 print "Output file saved in "+str(dest_path)
 plt.show()
